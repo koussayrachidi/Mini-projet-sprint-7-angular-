@@ -1,0 +1,38 @@
+<!-- registration-verification.component.html -->
+<div class="container mt-5">
+  <h2>Registration Page</h2>
+  <p>Enter your email and password to register:</p>
+
+  <form (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+    <div class="mb-3">
+      <label for="username" class="form-label">Email:</label>
+      <input type="email" id="username" name="username" [(ngModel)]="user.username" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password:</label>
+      <input type="password" id="password" name="password" [(ngModel)]="user.password" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="confirmPassword" class="form-label">Confirm Password:</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="verificationCode" class="form-label">Verification Code:</label>
+      <input *ngIf="showVerificationCodeInput" type="text" id="verificationCode" name="verificationCode" [(ngModel)]="verificationCode" class="form-control" required>
+    </div>
+
+    <div class="alert alert-danger" *ngIf="erreur === 2">
+      <strong>Password and confirmation password do not match</strong>
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{ showVerificationCodeInput ? 'Verify' : 'Register' }}</button>
+  </form>
+
+  <!-- Display error message -->
+  <div class="alert alert-danger mt-3" *ngIf="erreur === 1">
+    <strong>{{ showVerificationCodeInput ? 'Verification failed. Please check your code.' : 'Registration failed. Please check your inputs.' }}</strong>
+  </div>
+</div>

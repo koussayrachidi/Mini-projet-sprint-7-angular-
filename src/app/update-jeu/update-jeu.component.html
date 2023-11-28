@@ -1,0 +1,83 @@
+<div class="container">
+    <div>
+    <h2>Modifier un Jeu :</h2>
+    </div>
+    <form >
+    <div  class="col-sm-2 col-md-2 col-lg-2">
+    <label >ID Jeu</label>
+    <input readonly  type="text" [(ngModel)]="currentJeu.idJeu"
+    name="idJeu" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4" >
+    <label >Nom Jeu</label>
+    <input type="text"[(ngModel)]= "currentJeu.titre"
+    name="titre" class="form-control">
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+    <label >Taille jeu</label>
+    <input type="number" [(ngModel)]= "currentJeu.taille"
+    name="taille" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <label >Niveau Difficulte</label>
+        <input type="text" [(ngModel)]= "currentJeu.niveauDifficulte"
+        name="niveauDifficulte" class="form-control">
+        </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+        <label >Date création</label>
+<input type="date" [ngModel]="currentJeu.dateCreation | date: 'yyyy-MM-dd'"
+(ngModelChange)=" currentJeu.dateCreation= $event" name="dateCreation"
+ class="form-control">
+</div>
+
+<div class="col-sm-4 col-md-4 col-lg-4">
+    <select class="form-control form-control-lg" id="idEnt" name="idEnt"
+    [(ngModel)]="updatedEntId">
+    <option *ngFor="let ent of entreprises" [value]="ent.idEnt" >
+    {{ent.nomEnt}}
+    </option>
+    </select>
+    </div>
+
+
+    <div class="col-sm-16 col-md-16 col-lg-16">
+        <label class="mb-2">Image :</label>
+        <input type="file" (change)="onImageUpload($event)" class="form-control">
+        </div>
+
+        <div class="mt-2">
+            <button type="submit" (click)="onAddImageJeu()" class="btn
+            btn-success">Ajouter Image</button>
+            </div>
+            
+
+    <div class="col-sm-16 col-md-16 col-lg-16">
+        <img [src]="myImage" class="card-img-top img-fluid rounded-start"
+        style="width: 500px; height: 300px" />
+        </div>
+
+        <div class="card shadow mb-4">
+            <div class="card-body">
+            <table class="table table-striped">
+            <thead>
+            <tr> <th>Images</th> </tr>
+            </thead>
+            <tbody *ngFor="let img of currentJeu.images">
+                <tr>
+                <td><img class="card-img-top img-responsive"
+                src = "{{'data:' + img.type + ';base64,' + img.image}}"
+                style = "height :50px;width:100px"></td>
+                <td style="width:20%" ><a class="btn btn-danger"
+                    (click)="supprimerImage(img)">Supprimer</a></td>
+
+                </tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
+
+<div class="mt-2">
+<button type="submit" (click)="updateJeu()" class="btn btn-success">Modifer</button>
+</div>
+</form>
+</div>

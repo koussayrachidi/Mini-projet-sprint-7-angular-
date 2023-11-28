@@ -1,0 +1,17 @@
+<!-- verification-code.component.html -->
+<div class="container mt-5">
+    <h2>Verification Code Page</h2>
+    <p>Enter the verification code received in your email to complete the registration:</p>
+  
+    <form (ngSubmit)="verifyUser()" class="needs-validation" novalidate>
+      <div class="mb-3">
+        <label for="verificationCode" class="form-label">Verification Code:</label>
+        <input type="text" id="verificationCode" name="verificationCode" [(ngModel)]="verificationCode" class="form-control" required>
+        <div class="invalid-feedback">
+          Please enter the verification code.
+        </div>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Verify</button>
+    </form>
+</div>

@@ -1,0 +1,20 @@
+<form>
+    <div  [hidden]="ajout">
+    <label>ID Catégorie</label>
+    <input type="text" [readonly]="ajout" [(ngModel)]="entreprise.idEnt" name="idEntreprise" class="form-control w-25">
+    </div>
+    <div>
+    <label>Nom Entreprise</label>
+    <input type="text" [(ngModel)]="entreprise.nomEnt" name="nomEntreprise" class="form-control"
+    placeholder="Entrez un nom d'entreprise...">
+    </div>
+    <div>
+    <label>Nombre d'employee</label>
+    <input type="text" [(ngModel)]="entreprise.nombreEmployes" name="nombreEmployes" class="form-control"
+    placeholder="Entrez le nombre d'Employes...">
+    </div>
+    <div class="mt-2">
+     <button type="submit" [disabled]="!entreprise.nomEnt" class="btn btn-success"
+    (click)="saveEntreprise()" >{{ajout ? 'Ajouter' : 'Modifier'}}</button>
+    </div>
+    </form>
